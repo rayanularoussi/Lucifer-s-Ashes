@@ -11,9 +11,8 @@ public class DeathMenuManager : MonoBehaviour
     public void Start()
     {
         gameOverUI.SetActive(false);
-        playerStats = GetComponent<PlayerStats>();
     }
-    
+
     public void Update()
     {
         gameOver();
@@ -27,7 +26,12 @@ public class DeathMenuManager : MonoBehaviour
     IEnumerator StartGameWithDelay(float delay)
     {
         yield return new WaitForSeconds(delay); // wait for the specified delay
-        SceneManager.LoadScene(1); // load the game scene
+        SceneManager.LoadScene(2); // load the game scene
+    }
+
+    public void Menu()
+    {
+        SceneManager.LoadScene(1);  // start the coroutine with a delay of 2 seconds
     }
 
     public void QuitGame()
