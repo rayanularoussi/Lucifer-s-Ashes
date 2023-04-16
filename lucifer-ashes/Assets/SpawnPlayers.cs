@@ -1,13 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using Photon.Pun;
 
 public class SpawnPlayers : MonoBehaviourPunCallbacks
 {
-    public GameObject playerPrefab;
-    public GameObject cameraPrefab;
-
     public float minX;
     public float maxX;
     public float minY;
@@ -15,12 +11,11 @@ public class SpawnPlayers : MonoBehaviourPunCallbacks
 
     void Start()
     {
-        
         // Spawn the player object across the network
-        Vector2 randomPosition = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
-        PhotonNetwork.Instantiate(playerPrefab.name, randomPosition, Quaternion.identity);
+        Vector2 randomPosition = new(Random.Range(minX, maxX), Random.Range(minY, maxY));
+        PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Player"), randomPosition, Quaternion.identity);
         
         // Spawn the camera object across the network
-        PhotonNetwork.Instantiate(cameraPrefab.name, Vector3.zero, Quaternion.identity);
+        //PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Camera Manager"), Vector3.zero, Quaternion.identity);
     }
 }
