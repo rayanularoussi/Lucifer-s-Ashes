@@ -1,6 +1,6 @@
 # Lucifer-s Ashes
 
-blablabla
+
 
 ## Getting started
 
